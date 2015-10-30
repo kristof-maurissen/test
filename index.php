@@ -7,7 +7,7 @@
     </head>
     <body>
         <?php
-        print "hallo,welkom halooooooooo";
+        print "hallo";
         ?>
     </body>
 </html>
