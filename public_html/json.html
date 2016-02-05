@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            //JS object
+            var oPersoon = {
+                naam:"Jean Smits", 
+                beroepen:["coördinator","psycholoog","voorvechter","verpleger"], 
+                leeftijd: 56
+            }
+            //omgezet naar JSON object
+            var jsonPersoon = {
+                "naam":"Jean Smits", 
+                "beroepen":["coördinator","psycholoog","voorvechter","verpleger"], 
+                "leeftijd": 56
+            }
+            
+            //een zuivere array ondergaat geen verandering
+            var aaCoordinaten   = [[55.3124,3.8801],[53.4455, 4.8877]]
+            var jsonCoordinaten = [[55.3124,3.8801],[53.4455, 4.8877]]
+            
+            //native JSON support
+            var oPersoon = JSON.parse(jsonPersoon); // omzetten naar JS
+            var jsonPersoon = JSON.stringify(oPersoon); // omzetten naar JSON
+        </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Forms</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            window.onload = function(){
+            var eVoornaam = document.getElementById('voornaam');
+            eVoornaam.onfocus= function (){
+            this.value = "";
+            }
+            eVoornaam.onblur= function (){
+            this.value = (this.value=="")?eVoornaam.defaultValue:this.value;
+            }
+            
+            
+            var kleurKeuzes = document.frmTwee.kleur;
+            for(var i=0;i<kleurKeuzes.length;i++){
+            if(kleurKeuzes[i].checked==true){
+            break;
+            }
+            }
+           // alert("keuzerondje met index " + i + " gekozen met waarde " + kleurKeuzes[i].value);
+     
+        function spamKrijgen(){
+        alert(document.frmTwee.spam.checked + "aangevinkt") ;
+        }
+        function welkeStad(){
+        var steden = document.frmTwee.stad; //infeite een array
+        for(var i=0;i<steden.length;i++){
+        if(steden[i].checked==true){
+        alert(steden[i].value + " bezocht")
+        }
+        }
+        }   }
+    function welkeMuziek(){
+// een single-select select element
+var muziek = document.frmTwee.muziek; // of document.getElementById('muziek')
+var index = muziek.selectedIndex;
+var waarde = muziek.value;
+var tekst = muziek.options[index].firstChild.nodeValue;
+if(index == -1 || waarde == ""){
+alert("maak eerst een geldige keuze uit de keuzelijst, aub")
+}
+else{
+var str = "selectedIndex:" + index + " value:" + waarde + " tekst:" + tekst
+alert(str);
+}
+}
+            </script>
+    </head>
+    <body>
+        <form name="frmTwee" id="frmTwee" action="" method="">
+        <input type="text" name="voornaam" id="voornaam" />
+        <input type="text" name="familienaam" id="familienaam" />
+        <input type="text" name="voornaam" id="voornaam" value="typ uw voornaam hier" />
+        <br />
+        <br />
+        <textarea name="commentaar" id="commentaar" cols="40" rows="6"> uw commentaar hier</textarea>
+       
+        <p>kies een kleur:
+        <label>rood<input type="radio" name="kleur" id="rodekleur" value="rood" /></label>
+        <label>geel<input type="radio" name="kleur" id="gelekleur" value="geel" checked="checked" /></label>
+        <label>blauw<input type="radio" name="kleur" id="blauwekleur" value="blauw" /></label>
+        </p> 
+        <p>waar bent u ooit geweest:
+        <label>Brugge<input type="checkbox" name="stad" value="Brugge" checked="checked" /></label>
+        <label>Gent<input type="checkbox" name="stad" value="Gent" /></label>
+        <label>Oostende<input type="checkbox" name="stad" value="Oostende" /></label>
+        </p><p>
+        <label>Wil u graag spam ontvangen?<input type="checkbox" name="spam" value="ja" checked="checked" /></label>
+        </p>
+        <select name="muziek" id="muziek">
+        <option value="" selected="selected">-- kies uw muziek --</option>
+        <option value="kl">klassiek</option>
+        <option value="jz">jazz</option>
+        <option value="sc">schlager</option>
+        <option value="pp">pop</option>
+        <option value="funk">funk</option>
+</select>
+        </form>
+    </body>
+</html>

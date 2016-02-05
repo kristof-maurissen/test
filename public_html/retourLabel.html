@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    </head>
+    <body>
+        <p> 
+            <label><input type="checkbox" name="retourcheck" id="retourcheck" /> retour?</label> 
+        </p> 
+        <p> 
+            <label>datum heenvlucht: <input type="text" name="heendatum" id="heendatum" title="datum heenvlucht" /> </label> 
+            <label id="retourlabel" style="display:none" >datum heenvlucht: 
+                <input type="text" name="retourdatum" id="retourdatum" title="datum terugvlucht" /> </label> 
+        </p>
+        <script>
+var retourcheck = document.getElementById('retourcheck');
+var retourlabel = document.getElementById('retourlabel');
+var retourdatum = document.getElementById('retourdatum');
+retourcheck.onclick = function(){
+toonVerbergVeld(this,retourlabel);
+}
+//************************
+function toonVerbergVeld(ch,e){
+// toggled de display van een element
+// @ch = this = checkbox
+// @e = welk element te togglen
+if(e && ch.tagName == "INPUT" && ch.type == "checkbox"){
+    var velden = e.getElementsByTagName('input'); //alle velden die in e zitten
+var aan = (ch.checked);
+if(aan == true){
+e.style.display = "inline";
+e.focus();
+}
+else{
+e.style.display = "none";
+for (var i = 0; i < velden.length; i++){
+    velden[i].value = "";
+}
+}
+}
+}
+</script>
+    </body>
+</html>
