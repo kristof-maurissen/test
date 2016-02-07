@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Feature Sensing</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+        .rood{background-color:#FF8ABF}
+        .groen{background-color:#FF9;}
+        #browser{font-weight:bold; background-color:#FF9;}
+        #featureLijst{width:500px;}
+        .support{float:right;}
+        ul{background-color:#D8E6F3;}
+        li{margin:0.2em;}
+        </style>
+        <script>
+         var aFeatures  = [   
+         'document.images',
+         'document.layers',
+         'document.all',
+         'document.getElementById',
+         'document.querySelector',
+         'document.styleSheets',
+         'document.createElement',
+         'document.createNodeIterator',
+         'document.implementation.createDocument',
+         'window.walkTheDog',
+         'window.focus',
+         'window.ActiveXObject',
+         'window.XMLHttpRequest',
+         'window.localStorage',
+         '[].push',
+         '[].filter',
+         'Object.prototype',
+         'navigator.geolocation',
+         'document.documentElement.classList'
+         ]  ;
+     //console.log(aFeatures);    
+    window.onload = function(){
+        //toon welke browser de client op zit
+    var eBrowserTest= document.getElementById('browser');
+	eBrowserTest.innerHTML = "Uw browser is : " + navigator.userAgent;
+        //zelfde als hierboven 
+    /*var eBrowserTest = "Uw browser is : " + navigator.userAgent;
+        document.getElementById("browser").innerHTML = eBrowserTest;*/
+    
+        hasFeatures();
+    
+    }
+    
+    function hasFeatures(){
+    /*
+    Maakt een tabel via innerHTML met de ondersteuning van de feature hierboven in het array
+    */   
+    var eFeatureLijst   = document.getElementById('featureLijst');
+    var nFeatures       = aFeatures.length;
+    //console.log(nFeatures);
+    //enkel als er features zijn: een lege ul is ongeldig
+    if(nFeatures > 0 ){
+        var sLijst = "<ul>";
+        for (var i=0;i<nFeatures;i++) {
+        // eval evalueert een tekst die Javascipt bevat, eval('window.focus') = window.focus 
+            var bSupport   = (eval(aFeatures[i]))?true:false;
+            var sKleur     = (bSupport===true)?'groen':'rood';
+            sLijst  += "<li ";
+            sLijst  += "class=' " + sKleur + "'>";
+            sLijst  += aFeatures[i];
+            sLijst  += " <span class='support'>" + bSupport  + "</span>";
+            sLijst  += "</li>";
+        }
+        sLijst  += "</ul>";
+        eFeatureLijst.innerHTML = sLijst;
+    }
+    }
+        </script>
+    </head>
+    <body>
+        <h1>Feature Sensing</h1>
+        <div id="browser"></div>
+        <div id="featureLijst"></div>
+    </body>
+</html>
